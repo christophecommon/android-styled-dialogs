@@ -38,6 +38,8 @@ import android.widget.*;
  */
 public abstract class BaseDialogFragment extends DialogFragment {
 
+    private static TextView tvMessage;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = new Dialog(getActivity(), R.style.SDL_Dialog);
@@ -52,7 +54,8 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Builder builder = new Builder(this, getActivity(), inflater, container);
-        return build(builder).create();
+        View v = build(builder).create();
+        return v;
     }
 
     protected abstract Builder build(Builder initialBuilder);
@@ -64,6 +67,12 @@ public abstract class BaseDialogFragment extends DialogFragment {
             getDialog().setDismissMessage(null);
         }
         super.onDestroyView();
+    }
+
+    public void setMessage(String message) {
+        if (tvMessage != null) {
+            this.tvMessage.setText(message);
+        }
     }
 
     /**
@@ -228,7 +237,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
             if (mMessage != null) {
                 View viewMessage = mInflater.inflate(R.layout.dialog_part_message, content, false);
-                TextView tvMessage = (TextView) viewMessage.findViewById(R.id.sdl__message);
+                tvMessage = (TextView) viewMessage.findViewById(R.id.sdl__message);
                 tvMessage.setText(mMessage);
                 tvMessage.setTextColor(mMessageTextColor);
                 content.addView(viewMessage);

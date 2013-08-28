@@ -132,6 +132,14 @@
 		<item name="android:paddingLeft">@dimen/grid_4</item>
 		<item name="android:paddingRight">@dimen/grid_4</item>
 	</style>
+    <style name="SDL.TextView.Error">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">@dimen/grid_3</item>
+        <item name="android:paddingBottom">@dimen/grid_3</item>
+        <item name="android:paddingLeft">@dimen/grid_4</item>
+        <item name="android:paddingRight">@dimen/grid_4</item>
+        <item name="android:textColor">#E0240D</item>
+    </style>
 
 	<style name="SDL.TextView.Title">
 		<item name="android:textSize">22sp</item>
